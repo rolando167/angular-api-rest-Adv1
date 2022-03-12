@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, Observable, pluck, retry } from 'rxjs';
 import { UserModel } from '../models/user-model.model';
+import { catchError, map, Observable, pluck, retry, filter, take, tap } from 'rxjs';
 
 const BASE_URL = 'http://localhost:3000/';
 
@@ -21,6 +21,7 @@ export class UsuariosService {
   private getUsers(): Observable<UserModel[]>{
     return this.http.get<UserModel[]>(BASE_URL + 'users')
     .pipe(
+
       map((users: UserModel[]) => {
         console.log(users);
 
@@ -36,6 +37,14 @@ export class UsuariosService {
       map((data : any) => data?.users || data) // Evitar informacion basura, y aglgo mas solido
     )
       || null;
+  }
+
+
+  registrarUsuario(data: {email: string, nombre: string}){
+    //va logica de POST
+    return this.http.get<UserModel[]>(BASE_URL + 'users').pipe(
+      map((data : any) => data?.users || data) // Evitar informacion basura, y aglgo mas solido
+    )
   }
 
   // se muestra vacio (pagina blanco) porque faltaba color
