@@ -1,0 +1,36 @@
+<div class="alert alert-primary" role="alert">
+  {{title}}
+</div>
+
+<div class="md-12 my-1">
+  <input type="text" class="form-control">
+  <button type="button" class="btn btn-primary mt-1">Buscar</button>
+</div>
+
+<div class="md-12 my-1">
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of userModel">
+        <th scope="row">{{item.userId}}</th>
+        <td>{{item.firstname}}</td>
+        <td>{{item.lastname}}</td>
+        <td>@mdo</td>
+      </tr>
+      <tr *ngIf="!userModel">
+        <td colspan="4">Cargando...</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="alert alert-danger" role="alert" *ngIf="mensajeError">
+    {{mensajeError}}
+  </div>
+</div>
