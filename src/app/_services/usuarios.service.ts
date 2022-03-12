@@ -33,7 +33,7 @@ export class UsuariosService {
 
   private getUsers2(): Observable<UserModel[]>{
     return this.http.get<UserModel[]>(BASE_URL + 'users').pipe(
-      map((data : any) => data?.users || data)
+      map((data : any) => data?.users || data) // Evitar informacion basura, y aglgo mas solido
     )
       || null;
   }
@@ -46,4 +46,28 @@ export class UsuariosService {
   // https://mockoon.com/docs/latest/cors/
 
   // el map para solo traer un objeto dentro de muchos : map((data : any) => data?.users || data)
+
+  getUsersAll(): Observable<UserModel[]> {
+    return this.http.get<UserModel[]>('http://localhost:3000/users').pipe(
+      map((users: UserModel[]) => {
+        return users.map(user => ({
+          userId: user.userId,
+          name: user.firstname,
+          age: `${user.lastname} years old`
+        }))
+      })
+    )
+  }
+
+  removeUser(id: string): Observable<{}> {
+    return this.http.delete(`http://localhost:3000/users/${id}`)
+  }
+
+  addUser(name: string): Observable<UserModel> {
+    const user = {
+      name,
+      age: 30
+    }
+    return this.http.post<UserModel>('http://localhost:3000/users', user)
+  }
 }

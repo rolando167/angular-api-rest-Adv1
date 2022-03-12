@@ -3,8 +3,8 @@
 </div>
 
 <div class="md-12 my-1">
-  <input type="text" class="form-control">
-  <button type="button" class="btn btn-primary mt-1">Buscar</button>
+  <input type="text" class="form-control" [(ngModel)]="busqueda">
+  <button type="button" class="btn btn-primary mt-1" [disabled]="!busqueda">Buscar</button>
 </div>
 
 <div class="md-12 my-1">

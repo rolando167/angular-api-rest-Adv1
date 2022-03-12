@@ -19,6 +19,8 @@ export class UsuariosComponent implements OnInit {
 
   mensajeError! : string;
 
+  busqueda! : string;
+
   constructor(private _usuarioService :  UsuariosService) { }
 
   ngOnInit(): void {
