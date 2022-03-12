@@ -23,7 +23,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   mensajeError! : string;
   busqueda! : string;
 
-  mostrarFormulario: boolean = true;
+  mostrarFormulario: boolean = false;
 
   public interObservableSubs$!: Subscription;
 
