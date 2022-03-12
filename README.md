@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
 
-<img src="maing.jpg">
+<img src="main.jpg">
 
 ## Development server
 
